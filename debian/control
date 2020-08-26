@@ -1,0 +1,18 @@
+Source: kube-router
+Section: admin
+Priority: optional
+Maintainer: Waqar Ahmed <waqar@ixsystems.com>
+Build-Depends:	golang,
+		make,
+		debhelper-compat (= 12)
+Standards-Version: 4.4.0
+Homepage: http://www.truenas.com
+
+Package: kube-router
+Architecture: any
+Depends:	ipset,
+		ipvsadm,
+		${misc:Depends},
+		${shlibs:Depends}
+Description: Kube-router Package
+ This package is supposed to provide a debian package for kube-router CNI used in k8s.
