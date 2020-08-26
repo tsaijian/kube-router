@@ -1,0 +1,19 @@
+[Unit]
+Description=Kube-router CNI
+Documentation=https://github.com/cloudnative/kube-router
+Wants=network-online.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=exec
+TimeoutStartSec=0
+Restart=always
+RestartSec=5s
+ExecStart=env NODE_NAME=ix-truenas KUBE_ROUTER_CNI_CONF_FILE=/etc/cni/net.d/10-kuberouter.conflist /usr/local/bin/kube-router \
+        '--run-router=true' \
+        '--run-firewall=true' \
+        '--run-service-proxy=true' \
+        '--bgp-graceful-restart=true' \
+        '--kubeconfig=/etc/cni/net.d/kube-router.d/kubeconfig' \
