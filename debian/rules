@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+# export DH_VERBOSE = 1
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	sh -c "\
+		mkdir -p /root/go/src/github.com/cloudnativelabs; \
+		cp -a /dpkg-src /root/go/src/github.com/cloudnativelabs/kube-router; \
+		cd /root/go/src/github.com/cloudnativelabs/kube-router; \
+		go build -o kube-router cmd/kube-router/kube-router.go || exit 1; \
+		cd /dpkg-src; \
+	"
+
+override_dh_auto_install:
+	sh -c "\
+		mkdir -p debian/kube-router/usr/local/bin; \
+		cp -a /root/go/src/github.com/cloudnativelabs/kube-router/kube-router debian/kube-router/usr/local/bin/ || exit 1; \
+	"
+
+override_dh_shlibdeps:
+
+override_dh_usrlocal:
+
+override_dh_auto_clean:
+
+override_dh_auto_test:
