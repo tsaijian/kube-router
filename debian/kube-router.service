@@ -17,3 +17,4 @@ ExecStart=env NODE_NAME=ix-truenas KUBE_ROUTER_CNI_CONF_FILE=/etc/cni/net.d/10-k
         '--run-service-proxy=true' \
         '--bgp-graceful-restart=true' \
         '--kubeconfig=/etc/cni/net.d/kube-router.d/kubeconfig' \
+        '--enable-overlay=false' \
