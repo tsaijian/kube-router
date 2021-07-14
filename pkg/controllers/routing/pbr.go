@@ -39,6 +39,8 @@ func (nrc *NetworkRoutingController) disablePolicyBasedRouting() error {
 		return fmt.Errorf("failed to update rt_tables file: %s", err)
 	}
 
+	/*
+	We comment this to still have policy based routing for TN scale cluster
 	out, err := exec.Command("ip", "rule", "list").Output()
 	if err != nil {
 		return fmt.Errorf("failed to verify if `ip rule` exists: %s",
@@ -52,6 +54,7 @@ func (nrc *NetworkRoutingController) disablePolicyBasedRouting() error {
 			return fmt.Errorf("failed to delete ip rule: %s", err.Error())
 		}
 	}
+	*/
 
 	return nil
 }
