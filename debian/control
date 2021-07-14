@@ -10,7 +10,8 @@ Homepage: http://www.truenas.com
 
 Package: kube-router
 Architecture: any
-Depends:	ipset,
+Depends:	conntrack,
+		ipset,
 		ipvsadm,
 		${misc:Depends},
 		${shlibs:Depends}
