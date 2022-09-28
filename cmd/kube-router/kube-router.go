@@ -37,7 +37,11 @@ func Main() error {
 	if err != nil {
 		return fmt.Errorf("failed to parse flags: %s", err)
 	}
-	err = flag.Set("logtostderr", "true")
+	err = flag.Set("logtostderr", "false")
+	if err != nil {
+		return fmt.Errorf("failed to set flag: %s", err)
+	}
+	err = flag.Set("alsoToStderr", "true")
 	if err != nil {
 		return fmt.Errorf("failed to set flag: %s", err)
 	}
