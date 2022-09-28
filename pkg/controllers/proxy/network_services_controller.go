@@ -192,7 +192,7 @@ func (ln *linuxNetworking) ipAddrAdd(iface netlink.Link, ip string, addRoute boo
 		"table", "local", "proto", "kernel", "scope", "host", "src",
 		NodeIP.String(), "table", "local").CombinedOutput()
 	if err != nil {
-		klog.Errorf("Failed to replace route to service VIP %s configured on %s. Error: %v, Output: %s",
+		klog.Warningf("Failed to replace route to service VIP %s configured on %s. Error: %v, Output: %s",
 			ip, KubeDummyIf, err, out)
 	}
 	return nil
